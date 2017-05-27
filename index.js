@@ -1,20 +1,17 @@
 'use strict';
 require('dotenv').config();
 
-const http = require('http');
+const express = require('express');
+const app = express();
+
 const log = require('./log');
 
-
-// based off of https://github.com/htilly/zenmusic
-const requestHandler = function (req, res) {
-	req
-	.on('data', function(chunk) {})
-	.on('end', function() {
-		res.end("request received\n");
-	});
-};
-
-const server = http.createServer(requestHandler);
-server.listen(process.env.SERVER_PORT, function() {
+app.listen(process.env.SERVER_PORT, () => {
 	log.i('started');
+});
+
+// controller
+
+app.get('/', (req, res) => {
+	res.send('express configured\n');
 });
