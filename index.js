@@ -1,6 +1,9 @@
 'use strict';
+require('dotenv').config();
+
 const http = require('http');
 const log = require('./log');
+
 
 // based off of https://github.com/htilly/zenmusic
 const requestHandler = function (req, res) {
@@ -12,6 +15,6 @@ const requestHandler = function (req, res) {
 };
 
 const server = http.createServer(requestHandler);
-server.listen('5555', function() {
+server.listen(process.env.SERVER_PORT, function() {
 	log.i('started');
 });
