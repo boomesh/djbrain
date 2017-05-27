@@ -13,5 +13,5 @@ const requestHandler = function (req, res) {
 
 const server = http.createServer(requestHandler);
 server.listen('5555', function() {
-	log.info('started');
+	log.i('started');
 });
