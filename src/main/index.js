@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 
-const log = require('./log');
+const log = require('./helpers/log');
 
 app.use('/', router);
 app.listen(process.env.SERVER_PORT, () => {
