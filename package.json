@@ -2,7 +2,7 @@
   "name": "djbrain",
   "version": "1.0.0",
   "description": "slackbot talks to this, which talks to all other peripherals connected to this guy.",
-  "main": "src/main/index.js",
+  "main": "src/api/index.js",
   "scripts": {
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
