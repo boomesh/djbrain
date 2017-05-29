@@ -11,7 +11,7 @@ const app = express();
 /*
  * HELPERS
  */
-const log = require('./helpers/log');
+const log = require('../helpers/log');
 
 /*
  * SETUP ROUTER
