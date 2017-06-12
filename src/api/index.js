@@ -4,6 +4,7 @@ require('dotenv').config();
 /*
  * LIBRARIES  
  */
+const bodyParser = require('body-parser');
 const express = require('express');
 const router = express.Router();
 const app = express();
@@ -18,7 +19,8 @@ const log = require('../helpers/log');
  */
 require('./routing')(router);
 
-app.use('/', router);
+app.use(bodyParser.json()); // to parse application/json
+app.use('/api', router);
 app.listen(process.env.SERVER_PORT, () => {
 	log.i('started');
 });

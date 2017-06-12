@@ -7,7 +7,7 @@ function setupRouting(router) {
 }
 
 function setupPlayRoute(router) {
-	var playResource = require('./play/play');
+	const playResource = require('./play/play');
 
 	router.route('/play')
 	.get(playResource.GET)
