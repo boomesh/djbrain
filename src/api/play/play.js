@@ -16,7 +16,7 @@ function playSong(req, res) {
 	const query = req.body.query
 	if (query) {
 		media.addSong(query, () => {
-			res.status(204);
+			res.status(204).end();
 		}, (err) => {
 			res.status(500).json({message : "could not play song: " + err});
 		});

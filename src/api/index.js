@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 /*
- * LIBRARIES  
+ * LIBRARIES
  */
 const bodyParser = require('body-parser');
 const express = require('express');

@@ -28,6 +28,7 @@
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "request": "^2.81.0",
     "sonos": "git://github.com/bencevans/node-sonos.git",
     "winston": "^2.3.1"
   },
