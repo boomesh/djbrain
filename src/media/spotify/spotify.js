@@ -22,9 +22,10 @@ function auth(onSuccess, onError) {
 	baseRequest
 		.post(options, function(err, res, body) {
 			if (res.statusCode === 200) {
-				baseRequest.defaults({
+				var json = JSON.parse(body);
+				baseRequest = baseRequest.defaults({
 					headers: { 
-						Authorization : body.token_type + " " + body.access_token 
+						Authorization : json.token_type + " " + json.access_token 
 					}
 				});
 				onSuccess();
@@ -32,14 +33,33 @@ function auth(onSuccess, onError) {
 				// todo handle error
 				onError();
 			}
+			log.d("AUTH HAPPENED");
 			log.i(body);
 		})
 		.form({grant_type:'client_credentials'});
 }
 
 function search(query, onSuccess, onError) {
-	auth(() => {}, () => {});
-	onSuccess();
+	// test sonos with 4ziNEnmyNT3AJL98nfXr0D spid
+	var authSuccessCallback = () => {
+		log.d("searching for \""+query+"\"");
+		baseRequest
+			.get(HOST+"search/?type=track&q="+query, function(err, res, body) {
+				if (res.statusCode === 200) {
+					var json = JSON.parse(body);
+					onSuccess(json);
+				} else if (res.statusCode === 401) {
+					// todo figure out how to reauth and then make request again
+					onError();
+				} else {
+					onError();
+				}
+				log.d(res.statusCode);
+				log.i(res.body);
+			});
+	};
+
+	auth(authSuccessCallback, () => {});
 }
 
 module.exports = methods;
